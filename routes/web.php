@@ -13,7 +13,7 @@
 */
 
 // Pages
-Route::get('/', 'HomeController@index')->name('landing');
+Route::view('/', 'landing')->middleware('guest')->name('landing');
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('org/{org}', 'OrgController@index')->name('org');
 Route::post('org/{org}', 'OrgController@changePassword')->name('org.password');
@@ -30,8 +30,8 @@ Route::get('join/{org}', 'JoinController@index')->name('join');
 Route::post('join/{org}', 'JoinController@inviteUser')->name('join.post');
 Route::get('join/{org}/callback', 'JoinController@callback')->name('join.callback');
 Route::get('o/{name}', 'JoinController@redirect')->name('redirect');
-Route::get('developer', 'DeveloperController@index')->name('developer');
-Route::get('token', 'DeveloperController@token')->name('token');
+Route::view('developer', 'developer')->name('developer');
+Route::view('token', 'token')->middleware('auth')->name('token');
 Route::delete('token', 'DeveloperController@deleteToken')->name('token.delete');
 
 // Auth routes

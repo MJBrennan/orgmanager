@@ -11,10 +11,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Styles -->
-    <link href="{{ url('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ url(mix('css/app.css')) }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.min.css" rel="stylesheet">
     @yield('header')
-    <script src="{{ url('/js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
     <!-- Scripts -->
     @include('layouts.code.head')
 </head>
@@ -88,7 +88,7 @@
 <!-- Scripts -->
 @if (count($errors) > 0)
     <script>
-        sweetAlert("Oops...", "{{ $errors->first() }}", "error");
+        swal("Oops...", "{{ $errors->first() }}", "error");
     </script>
 @endif
 @if (session('success'))
